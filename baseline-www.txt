@@ -1,0 +1,5 @@
+/var/www/html:
+total 12
+drwxr-xr-x 2 root root 4096 Oct 22 21:06 .
+drwxr-xr-x 3 root root 4096 Oct 22 21:06 ..
+-rw-r--r-- 1 root root  615 Oct 22 21:06 index.nginx-debian.html
