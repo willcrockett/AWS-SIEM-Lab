@@ -1,3 +1,4 @@
+# output of `sudo ls -laR /var/www/html`
 /var/www/html:
 total 12
 drwxr-xr-x 2 root root 4096 Oct 22 21:06 .
