@@ -1,4 +1,4 @@
-# AWS SIEM Lab Using Wazuh
+# AWS-Wazuh Lab
 
 This project demonstrates an end-to-end SIEM pipeline built in AWS using Wazuh as the central analysis platform. It collects CloudTrail logs, VPC Flow Logs, and host-level events from an EC2 web server, then correlates those events with controlled reconnaissance and vulnerability scans (Nmap, Nikto, Gobuster). The goal is to show practical detection, log analysis, and security operations fundamentals.
 
