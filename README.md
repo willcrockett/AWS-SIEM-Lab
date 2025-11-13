@@ -56,7 +56,7 @@ This project demonstrates an end-to-end SIEM pipeline built in AWS using Wazuh a
 - Default rulesets enabled, including web server and recon detection
     
 
-Refer to `deployment_steps.md` for details.
+Refer to `deployment-steps.md` for details.
 
 ---
 
@@ -92,7 +92,7 @@ $ nikto -h http://<TARGET IP> -output "$OUT"/nikto.txt 2>&1 | tee "$OUT"/nikto.f
 # look for common webserver directory/file structures via bruteforce
 $ gobuster dir -u http://<TARGET IP>/ -w /usr/share//seclists/Discovery/Web-Content/common.txt -t 40 -o "$OUT"/gobuster.txt 2>&1 | tee "$OUT"/gobuster.full.txt
 ~~~
-Outputs for each tool are stored in `/log_samples`.
+Outputs for each tool are stored in `/evidence/attacker`.
 
 ---
 
@@ -110,7 +110,8 @@ $ nmap -sV --script=http-vuln* -p80 <TARGET IP> -oN "$OUT"/nmap-nse-http.txt 2>&
 
 **Finding**  
 The scan identified a potential (albeit low-priority and likely a false positive) **HTTP DoS-related vulnerability** on port 80.  
-![[Pasted image 20251113121245.png]]
+<img width="1323" height="780" alt="Screenshot 2025-11-13 121244" src="https://github.com/user-attachments/assets/3d9e160e-146f-4a25-ab5b-5186cdf0ef5f" />
+
 *from nmap-nse.full.txt*
 
 ---
@@ -118,15 +119,14 @@ The scan identified a potential (albeit low-priority and likely a false positive
 ### 5.2 How the activity appeared in Wazuh
 
 **Dashboard event**
-![[3-vulver-nmapnse.png]]
-![[Pasted image 20251113121516.png]]
-Brief caption:
+<img width="3801" height="1818" alt="3-vulver-nmapnse" src="https://github.com/user-attachments/assets/578bb311-b2c0-45b8-bbb5-5676b9ebcc75" />
+<img width="3200" height="1945" alt="Screenshot 2025-11-13 121512" src="https://github.com/user-attachments/assets/27fad991-d54c-4ad6-b41f-72e6d44355a2" />
 
 > Wazuh detected the vulnerability-oriented scan as multiple HTTP 400 responses to the same source and raised HTTP-related reconnaissance and anomaly alerts, mapping them to the correct rule categories and severity levels.
 
 **Raw Wazuh alert log**  
+<img width="3711" height="1178" alt="Screenshot 2025-11-13 121820" src="https://github.com/user-attachments/assets/e941ab60-ba67-4a80-bf8d-08dcfebc64a5" />
 
-![[Pasted image 20251113121822.png]]
 > The log entry contains source IP, target IP, method, URL path, and associated rule IDs, confirming end-to-end ingestion and rule execution.
 
 ---
@@ -166,8 +166,6 @@ No tuning applied. In a production environment, rate-based rules and recon signa
 ---
 
 ## 7. Key Findings
-
-State the value plainly:
 
 - Reconnaissance and vulnerability scans produce clear, classifiable event signatures
     
