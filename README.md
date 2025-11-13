@@ -5,8 +5,8 @@ This project demonstrates an end-to-end SIEM pipeline built in AWS using Wazuh a
 ---
 
 ## 1. Architecture Overview
+<img width="1667" height="982" alt="network-diagram" src="https://github.com/user-attachments/assets/f10cec3d-afc6-401c-b769-cb7ef6992ef5" />
 
-![[SIEM Lab Diag.drawio(1).png]]
 
 **Components**
 
